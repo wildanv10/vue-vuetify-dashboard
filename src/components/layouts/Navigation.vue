@@ -5,6 +5,7 @@
     permanent
     floating
     :mini-variant="miniVariant"
+    :style="{ background: background }"
   >
     <v-list>
       <v-list-item v-for="item in items" :key="item.title" link :to="item.link">
@@ -41,6 +42,11 @@ export default {
   methods: {
     miniVariantToggler() {
       this.miniVariant = !this.miniVariant;
+    },
+  },
+  computed: {
+    background() {
+      return this.$vuetify.theme.themes[this.$store.state.theme].background;
     },
   },
 };

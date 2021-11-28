@@ -1,5 +1,6 @@
 <template>
-  <v-app>
+  <v-app :style="{ background: background }">
+    <!-- <v-app> -->
     <Navigation />
     <Header />
     <v-main>
@@ -21,8 +22,13 @@ export default {
     Navigation,
     Breadcrumbs,
   },
-  data: () => ({
-    //
-  }),
+  mounted() {
+    this.$store.dispatch("setTheme", this.$vuetify.theme.dark);
+  },
+  computed: {
+    background() {
+      return this.$vuetify.theme.themes[this.$store.state.theme].background;
+    },
+  },
 };
 </script>
